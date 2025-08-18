@@ -1,0 +1,16 @@
+# Ignore everything
+/*
+# Allow gitignore, YAML, secrets, packages, automations, etc
+!/.gitignore
+!/*.yaml
+!/*.example
+!/custom_components/
+!/www/
+!/packages/
+!/scripts/
+!/blueprints/
+!/scenes/
+!/lovelace/
+# Ignore secrets (check secrets.example.yaml)
+/secrets.yaml
+!/secrets.yaml.backup

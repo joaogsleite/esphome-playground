@@ -1,0 +1,20 @@
+default_config:
+
+homeassistant:
+  name: Playground
+  latitude: 38.8034
+  longitude: -9.3749
+  elevation: 50
+  radius: 100
+  unit_system: metric
+  currency: EUR
+  country: PT
+  time_zone: "Europe/Lisbon"
+  debug: false
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+logger:
+api:
