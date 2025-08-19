@@ -1,0 +1,14 @@
+substitutions:
+  slave: 1
+  address: 0
+
+binary_sensor:
+  - platform: modbus_controller
+    modbus_controller_id: "modbus_controller${slave}"
+    name: ${name}
+    id: ${name}
+    register_type: read
+    address: ${address}
+    bitmask: 0xFFFF
+    filters:
+      - lambda: "return x >= 1000;"
