@@ -1,0 +1,8 @@
+switch:
+  - platform: gpio
+    id: ${name}
+    name: ${name}
+    pin:
+      pca9554: relay_expander
+      number: ${pin}
+      mode: output

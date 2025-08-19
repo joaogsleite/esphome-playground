@@ -1,0 +1,39 @@
+substitutions:
+  toggle: "none"
+
+binary_sensor:
+  - platform: gpio
+    id: ${name}
+    pin:
+      number: ${pin}
+      mode: INPUT_PULLUP
+      inverted: true
+    on_multi_click:
+      - timing:
+          - ON for at most 350ms
+        then:
+          - homeassistant.event:
+              event: esphome.button
+              data:
+                id: ${name}
+                action: single
+          - switch.toggle: ${toggle}
+              
+      - timing:
+          - ON for at most 350ms
+          - OFF for at least 200ms
+          - ON for at most 350ms
+        then:
+          - homeassistant.event:
+              event: esphome.button
+              data:
+                id: ${name}
+                action: double
+      - timing:
+          - ON for at least 1s
+        then:
+          - homeassistant.event:
+              event: esphome.button
+              data:
+                id: ${name}
+                action: long

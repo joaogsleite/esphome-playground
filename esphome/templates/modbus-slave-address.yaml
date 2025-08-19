@@ -1,0 +1,23 @@
+# change slave address of a device through rs485
+
+substitutions:
+  old_address: 1
+  new_address: 2
+
+number:
+  - platform: modbus_controller
+    modbus_controller_id: "modbus_controller${old_address}"
+    id: new_slave_id
+    name: "Relay Slave ID"
+    register_type: holding
+    address: 0x4000   # device address register
+    value_type: U_WORD
+    skip_updates: 1   # don’t poll, write only
+
+esphome:
+  on_boot:
+    priority: -100
+    then:
+      - number.set:
+          id: new_slave_id
+          value: ${new_address}

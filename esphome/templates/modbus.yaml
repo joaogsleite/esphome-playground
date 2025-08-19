@@ -1,0 +1,14 @@
+substitutions:
+  address: 1
+  id: 1
+
+# setup modbus
+modbus:
+  id: "modbus${id}"
+  uart_id: uart_rs485
+
+# setup modbus controller for relays
+modbus_controller:
+  id: "modbus_controller${id}"
+  modbus_id: "modbus${id}"
+  address: ${address}

@@ -1,0 +1,26 @@
+# https://www.waveshare.com/wiki/ESP32-S3-ETH-8DI-8RO
+
+# define the board architecture
+esp32:
+  board: esp32s3box
+  framework:
+    type: esp-idf
+
+# setup I2C interface
+i2c:
+  sda: GPIO42
+  scl: GPIO41
+  scan: true
+
+# I2C controller for the relays
+pca9554:
+  - id: relay_expander
+    address: 0x20
+
+# setup uart interface
+uart:
+  id: uart_rs485
+  tx_pin: GPIO17   # RS485 output
+  rx_pin: GPIO18   # RS485 input
+  baud_rate: 9600
+  stop_bits: 1

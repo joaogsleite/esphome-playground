@@ -1,0 +1,31 @@
+esphome:
+  name: ${name}
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${name}
+    password: !secret ap_password
+
+captive_portal:
+
+# for when no variable/action is passed to other packages that do actions on switches
+switch:
+  - platform: template
+    id: none
+    turn_on_action: []
+    turn_off_action: []
